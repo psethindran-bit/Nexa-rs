@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NEXA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --dark-blue: #040d1a; --medium-blue: rgba(15, 42, 82, 0.7); --light-blue: #d9e6ff; --accent: #4a90e2; --neon-blue: #00eaff; --glass: rgba(255, 255, 255, 0.05); }
+        body { margin: 0; background: var(--dark-blue); background-image: linear-gradient(rgba(0, 234, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 234, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px; color: var(--light-blue); font-family: 'Rajdhani', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+        nav { backdrop-filter: blur(10px); background: var(--medium-blue); padding: 10px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 234, 255, 0.2); position: sticky; top: 0; z-index: 1000; }
+        .logo { display: flex; flex-direction: column; }
+        .logo-text { font-family: "Orbitron", sans-serif; font-size: 2rem; letter-spacing: 5px; color: var(--neon-blue); margin: 0; }
+        .tagline { font-family: "Orbitron", sans-serif; font-size: 0.6rem; letter-spacing: 3px; color: var(--accent); margin: -2px 0 0 0; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; }
+        nav ul li a { text-decoration: none; color: var(--light-blue); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+
+        .contact-container { max-width: 900px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
+        .contact-info h1 { font-family: 'Orbitron'; font-size: 3rem; color: var(--white); margin-bottom: 20px; }
+        .social-links { margin-top: 30px; display: flex; gap: 20px; }
+        .social-links a { font-size: 1.8rem; color: var(--light-blue); transition: 0.3s; }
+        .social-links a:hover { color: var(--neon-blue); transform: scale(1.2); text-shadow: 0 0 10px var(--neon-blue); }
+
+        .contact-form { background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 234, 255, 0.1); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--neon-blue); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        input, textarea { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 12px; color: white; border-radius: 5px; font-family: 'Rajdhani'; font-size: 1.1rem; outline: none; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0, 234, 255, 0.2); }
+        .submit-btn { width: 100%; padding: 15px; background: transparent; border: 2px solid var(--neon-blue); color: var(--neon-blue); font-family: 'Orbitron'; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.4s; }
+        .submit-btn:hover { background: var(--neon-blue); color: var(--dark-blue); box-shadow: 0 0 20px var(--neon-blue); }
+
+        footer { margin-top: auto; padding: 30px; text-align: center; background: rgba(0,0,0,0.4); border-top: 1px solid rgba(255,255,255,0.05); letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2 class="logo-text">NEXA</h2>
+            <p class="tagline">WHERE TECHNOLOGY EVOLVES</p>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="lessons.html">Lessons</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="contact-container">
+        <div class="contact-info">
+            <h1>GET IN TOUCH</h1>
+            <p>Have a project in mind or need technical support? Connect with the NEXA uplink.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label>Identification (Name)</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Digital Address (Email)</label>
+                    <input type="email" placeholder="email@address.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Transmission (Message)</label>
+                    <textarea rows="5" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">SEND TRANSMISSION</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>© 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL</footer>
+</body>
+</html>

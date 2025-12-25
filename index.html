@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #040d1a;
+            --medium-blue: rgba(15, 42, 82, 0.7); /* Glass effect */
+            --light-blue: #d9e6ff;
+            --accent: #4a90e2;
+            --neon-blue: #00eaff;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ------------------ GLOBAL & ANIMATION ------------------ */
+        body {
+            margin: 0;
+            background: var(--dark-blue);
+            /* Tech grid background effect */
+            background-image: 
+                linear-gradient(rgba(0, 234, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 234, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--light-blue);
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ------------------ NAVBAR ------------------ */
+        nav {
+            backdrop-filter: blur(10px);
+            background: var(--medium-blue);
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { display: flex; flex-direction: column; }
+        .logo-text {
+            font-family: "Orbitron", sans-serif;
+            font-size: 2rem;
+            letter-spacing: 5px;
+            color: var(--neon-blue);
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+        }
+
+        .tagline {
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin: -2px 0 0 0;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* ------------------ HERO SECTION ------------------ */
+        .hero {
+            text-align: center;
+            padding: 140px 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta {
+            display: inline-block;
+            background: transparent;
+            color: var(--neon-blue);
+            padding: 15px 40px;
+            text-decoration: none;
+            border: 2px solid var(--neon-blue);
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Orbitron';
+            transition: 0.4s;
+            box-shadow: 0 0 15px rgba(0, 234, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta:hover {
+            background: var(--neon-blue);
+            color: var(--dark-blue);
+            box-shadow: 0 0 30px var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        /* ------------------ FEATURE CARDS ------------------ */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .card:hover {
+            background: rgba(0, 234, 255, 0.05);
+            border-color: var(--neon-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron';
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .card p { font-size: 1.1rem; opacity: 0.7; }
+
+        /* ------------------ FOOTER ------------------ */
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <h2 class="logo-text">NEXA</h2>
+            <p class="tagline">Where Technology Evolves</p>
+        </div>
+        <ul>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="lessons.html">Lessons</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>MASTER CODING & ARDUINO</h1>
+        <p>A futuristic gateway to mastering digital logic and circuit architecture.</p>
+        <a href="lessons.html" class="cta">INITIALIZE LEARNING</a>
+    </div>
+
+    <div class="features">
+        <div class="card">
+            <i class="fas fa-microchip"></i>
+            <h3>INTERACTIVE LABS</h3>
+            <p>Engage with high-fidelity, step-by-step electronics blueprints.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-rocket"></i>
+            <h3>HARDWARE BUILDS</h3>
+            <p>Deploy real-world Arduino and Raspberry Pi projects into reality.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL</p>
+    </footer>
+
+</body>
+</html>
