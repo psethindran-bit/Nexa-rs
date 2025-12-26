@@ -144,7 +144,6 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             height: 100%;
         }
         .lesson-card::before {
@@ -181,13 +180,6 @@
         .badge.mid { background: rgba(255,204,0,0.2); color: var(--mid); border: 1px solid var(--mid); }
         .badge.hard { background: rgba(255,68,68,0.2); color: var(--hard); border: 1px solid var(--hard); }
 
-        .time { 
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            color: #bbb;
-        }
-
         .lesson-card h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -197,27 +189,26 @@
         }
 
         .lesson-card p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             opacity: 0.9;
             line-height: 1.6;
-            margin-bottom: 25px;
-            flex-grow: 1;
+            margin-bottom: 20px;
         }
 
         /* KEY LEARNING POINTS */
         .key-points {
             background: rgba(0,234,255,0.1);
             border-left: 3px solid var(--neon-blue);
-            padding: 15px;
-            margin: 20px 0;
+            padding: 18px;
+            margin: 20px 0 15px;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
         .key-points h4 {
             color: var(--neon-blue);
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -228,15 +219,41 @@
             margin: 0;
         }
         .key-points li {
-            padding: 4px 0;
+            padding: 6px 0;
             position: relative;
-            padding-left: 20px;
+            padding-left: 22px;
+            line-height: 1.5;
         }
         .key-points li::before {
             content: "▸";
             color: var(--neon-blue);
             position: absolute;
             left: 0;
+            font-weight: bold;
+        }
+
+        /* INSIGHTS SECTION */
+        .insights {
+            background: rgba(74,144,226,0.15);
+            border: 1px solid rgba(74,144,226,0.3);
+            padding: 16px;
+            margin-top: 15px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+        }
+        .insights h5 {
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .insights p {
+            margin: 0;
+            opacity: 0.95;
+            line-height: 1.55;
         }
 
         /* FOOTER */
@@ -278,7 +295,7 @@
 
     <div class="header-section">
         <h1>Learning Laboratory</h1>
-        <p>Master hardware fundamentals through structured modules with clear learning objectives and practical applications.</p>
+        <p>Master hardware fundamentals through structured modules with deep insights and practical applications.</p>
     </div>
 
     <main class="lessons-container">
@@ -288,86 +305,94 @@
             <h2 class="category-title">01. Core Electronics</h2>
             <div class="lessons-grid">
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge easy">Beginner</span>
-                            <span class="time"><i class="far fa-clock"></i> 15 MIN</span>
-                        </div>
-                        <h3>Ohm's Law Masterclass</h3>
-                        <p>Learn the fundamental relationship <strong>V = I × R</strong>. Calculate current flow, voltage drops, and power dissipation in any circuit.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-bolt"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Calculate resistance needed for LED circuits</li>
-                                <li>Solve series and parallel resistor networks</li>
-                                <li>Understand power ratings (watts = volts × amps)</li>
-                                <li>Prevent component damage from overcurrent</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge easy">Beginner</span>
+                    </div>
+                    <h3>Ohm's Law Masterclass</h3>
+                    <p>The universal circuit equation <strong>V = I × R</strong> governs ALL electrical behavior. Every LED resistor, power supply, and sensor circuit depends on this relationship.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-bolt"></i> Core Skills You'll Master:</h4>
+                        <ul>
+                            <li>Calculate exact resistor values: <code>R = (Vsupply - Vled) / Iled</code></li>
+                            <li>Series: <code>Rtotal = R1 + R2 + R3</code>, Current constant</li>
+                            <li>Parallel: <code>1/Rtotal = 1/R1 + 1/R2</code>, Voltage constant</li>
+                            <li>Power: <code>P = V × I</code> prevents resistor burnout</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-lightbulb"></i> Pro Insight:</h5>
+                        <p>5V Arduino pin + 20mA LED (2V drop) = <strong>150Ω resistor</strong>. Use 180Ω (nearest E24 value) for safety. Never guess—always calculate!</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge easy">Beginner</span>
-                            <span class="time"><i class="far fa-clock"></i> 20 MIN</span>
-                        </div>
-                        <h3>Component Anatomy</h3>
-                        <p>Identify electronic components by sight and symbol. Read resistor color codes and capacitor markings accurately.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-microchip"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Decode 4/5-band resistor color codes</li>
-                                <li>Read ceramic/electrolytic capacitor values</li>
-                                <li>Identify diode markings and LED polarity</li>
-                                <li>Test components with multimeter</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge easy">Beginner</span>
+                    </div>
+                    <h3>Component Anatomy</h3>
+                    <p>90% of debugging fails due to misidentification. Master visual recognition and markings to instantly know component values and polarity.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-microchip"></i> Identification Mastery:</h4>
+                        <ul>
+                            <li>Resistors: Brown-Black-Red-Gold = 1kΩ ±5%</li>
+                            <li>Capacitors: 104 = 100nF, 476 = 47µF</li>
+                            <li>Diodes: Band = Cathode, LED longer leg = Anode</li>
+                            <li>Transistors: C-B-E pinout, not all packages same</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-search"></i> Debug Trick:</h5>
+                        <p>Multimeter diode mode beeps for forward bias only. Test ALL pins systematically. No beep = dead component or wrong polarity.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge easy">Beginner</span>
-                            <span class="time"><i class="far fa-clock"></i> 25 MIN</span>
-                        </div>
-                        <h3>Power Supply Basics</h3>
-                        <p>Build stable 5V/3.3V power supplies. Understand voltage regulation and filtering.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-plug"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Use 7805 regulator for 5V output</li>
-                                <li>Add capacitors for ripple filtering</li>
-                                <li>Calculate heat sink requirements</li>
-                                <li>USB vs barrel jack power options</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge easy">Beginner</span>
+                    </div>
+                    <h3>Power Supply Design</h3>
+                    <p>Arduino USB power drops under load. Build reliable 5V/3.3V rails that won't crash your project mid-operation.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-plug"></i> Bulletproof Power:</h4>
+                        <ul>
+                            <li>7805 needs <code>7V-33V in → 5V out</code>, 1A max</li>
+                            <li>100nF + 10µF caps = ripple-free output</li>
+                            <li>Heat calculation: <code>Pd = (Vin - 5V) × Iload</code></li>
+                            <li>Reverse polarity diode prevents magic smoke</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-fire"></i> Thermal Reality:</h5>
+                        <p>12V→5V at 500mA = 3.5W heat! Without heatsink, 7805 hits 150°C in 30 seconds. Always calculate dissipation first.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge mid">Intermediate</span>
-                            <span class="time"><i class="far fa-clock"></i> 35 MIN</span>
-                        </div>
-                        <h3>Kirchhoff's Laws</h3>
-                        <p>Solve complex circuits using KVL (voltage) and KCL (current) laws.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-calculator"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Apply KVL around circuit loops</li>
-                                <li>Use KCL at circuit junctions</li>
-                                <li>Solve voltage divider circuits</li>
-                                <li>Analyze current sharing in parallel</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge mid">Intermediate</span>
+                    </div>
+                    <h3>Kirchhoff's Circuit Laws</h3>
+                    <p>Solve ANY circuit without simulation. KVL + KCL = complete current/voltage analysis toolkit.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-equals"></i> Mathematical Precision:</h4>
+                        <ul>
+                            <li>KVL: Sum of voltages around loop = 0V</li>
+                            <li>KCL: Sum of currents into node = 0A</li>
+                            <li>Voltage divider: <code>Vout = Vin × (R2/(R1+R2))</code></li>
+                            <li>Current divider: <code>I1 = Iin × (R2/(R1+R2))</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-puzzle-piece"></i> Real Circuit Hack:</h5>
+                        <p>ADC reference needs 1.1V? Use 10k+10k divider from 5V = 2.5V, then another divider for precision. Measure, don't assume!</p>
                     </div>
                 </div>
             </div>
@@ -375,110 +400,120 @@
 
         <!-- 02. ARDUINO & LOGIC -->
         <div class="lesson-category">
-            <h2 class="category-title">02. Arduino & Logic</h2>
+            <h2 class="category-title">02. Arduino Programming</h2>
             <div class="lessons-grid">
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge mid">Intermediate</span>
-                            <span class="time"><i class="far fa-clock"></i> 45 MIN</span>
-                        </div>
-                        <h3>The Setup() & Loop()</h3>
-                        <p>Master Arduino program structure. Write efficient, readable code.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-code"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Initialize pins in setup()</li>
-                                <li>Use loop() for continuous operation</li>
-                                <li>Declare global vs local variables</li>
-                                <li>Avoid common blocking code errors</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge mid">Intermediate</span>
+                    </div>
+                    <h3>Setup() & Loop() Architecture</h3>
+                    <p>95% of Arduino bugs come from poor structure. Master the ONE correct way to organize microcontroller code.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-code"></i> Production Code Structure:</h4>
+                        <ul>
+                            <li><code>setup()</code>: One-time pin config, serial init</li>
+                            <li><code>loop()</code>: Non-blocking main program</li>
+                            <li>Global variables for shared state only</li>
+                            <li>Functions for reusable code blocks</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-ban"></i> Common Trap:</h5>
+                        <p><code>delay(1000)</code> in loop() = unresponsive robot. Use <code>millis()</code> timing instead. Non-blocking = professional.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge mid">Intermediate</span>
-                            <span class="time"><i class="far fa-clock"></i> 60 MIN</span>
-                        </div>
-                        <h3>Digital vs Analog</h3>
-                        <p>Understand binary (digital) vs continuous (analog) signals.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-signal"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>digitalRead() / digitalWrite() usage</li>
-                                <li>analogRead() returns 0-1023</li>
-                                <li>PWM with analogWrite() on pins 3,5,6,9,10,11</li>
-                                <li>Map sensor values to outputs</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge mid">Intermediate</span>
+                    </div>
+                    <h3>Digital vs Analog Signals</h3>
+                    <p>Arduino speaks binary (digital) but hears analog world. Bridge the gap with proper signal conversion.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-signal"></i> Pin Functions Decoded:</h4>
+                        <ul>
+                            <li><code>digitalRead(pin) → HIGH/LOW</code> (5V/0V)</li>
+                            <li><code>analogRead(A0) → 0-1023</code> (10-bit ADC)</li>
+                            <li><code>analogWrite(pin, 128) → PWM 50% duty</code> (pins 3,5,6,9,10,11)</li>
+                            <li><code>map(value, 0,1023, 0,255)</code> scales ranges</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-chart-line"></i> Sensor Reality:</h5>
+                        <p>Potentiometer 0-5V → <code>analogRead()</code> → 0-1023 → <code>map()</code> → 0-100%. Photoresistor needs 10k pull-down for full range.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge hard">Advanced</span>
-                            <span class="time"><i class="far fa-clock"></i> 90 MIN</span>
-                        </div>
-                        <h3>I2C Communication</h3>
-                        <p>Connect multiple devices using 2-wire I2C protocol.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-link"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Wire.begin() and device addresses (0x68 MPU6050)</li>
-                                <li>Read/Write registers with Wire library</li>
-                                <li>I2C scanner to find connected devices</li>
-                                <li>Handle multi-byte transfers</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge hard">Advanced</span>
+                    </div>
+                    <h3>I²C Multi-Device Protocol</h3>
+                    <p>Connect 127 sensors to 2 Arduino pins. I²C turns single-board into multi-device powerhouse.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-link"></i> I²C Implementation:</h4>
+                        <ul>
+                            <li><code>#include &lt;Wire.h&gt;; Wire.begin();</code></li>
+                            <li>MPU6050 = 0x68, BMP280 = 0x76 addresses</li>
+                            <li><code>Wire.write(reg); Wire.requestFrom(addr, bytes);</code></li>
+                            <li>I²C scanner finds all devices automatically</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-network-wired"></i> Pro Tip:</h5>
+                        <p>4.7kΩ pullups mandatory! No pullups = no communication. 400kHz speed max for 100kHz reliability with long wires.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge hard">Advanced</span>
-                            <span class="time"><i class="far fa-clock"></i> 75 MIN</span>
-                        </div>
-                        <h3>SPI Protocol Mastery</h3>
-                        <p>High-speed 4-wire communication for displays and sensors.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-broadcast-tower"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>SPI pins: 11(MOSI), 12(MISO), 13(SCK)</li>
-                                <li>Chip Select (CS) for multiple devices</li>
-                                <li>SPI clock modes 0,1,2,3 configuration</li>
-                                <li>High-speed SD card and OLED display</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge hard">Advanced</span>
+                    </div>
+                    <h3>SPI High-Speed Protocol</h3>
+                    <p>10x faster than I²C. Perfect for displays, SD cards, fast sensors requiring real-time data.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-broadcast-tower"></i> SPI Hardware Pins:</h4>
+                        <ul>
+                            <li>Uno: 11(MOSI), 12(MISO), 13(SCK)</li>
+                            <li>Each device needs unique CS pin</li>
+                            <li>4 clock modes (CPOL/CPHA) match device specs</li>
+                            <li><code>SPI.beginTransaction(SPISettings(1e6, MSBFIRST, SPI_MODE0))</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-tachometer-alt"></i> Speed Reality:</h5>
+                        <p>OLED display updates @ 8MHz = buttery smooth. SD card logging hits 20MB/s bursts. Wrong clock mode = garbage data.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge hard">Advanced</span>
-                            <span class="time"><i class="far fa-clock"></i> 120 MIN</span>
-                        </div>
-                        <h3>Interrupts & Timers</h3>
-                        <p>Replace polling with event-driven interrupts.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-stopwatch"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>attachInterrupt() on pins 2,3</li>
-                                <li>Timer1/2 for precise timing</li>
-                                <li>ISR (Interrupt Service Routine) best practices</li>
-                                <li>Non-blocking code architecture</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge hard">Advanced</span>
+                    </div>
+                    <h3>Interrupts & Hardware Timers</h3>
+                    <p>Replace wasteful polling with instant event response. 1000x more efficient real-time code.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-stopwatch"></i> Event-Driven Code:</h4>
+                        <ul>
+                            <li><code>attachInterrupt(digitalPinToInterrupt(2), ISR, RISING)</code></li>
+                            <li>Timer1: 16-bit, up to 62.5ns resolution</li>
+                            <li>ISR must execute &lt;10µs, no delay()/Serial</li>
+                            <li>Flag variables communicate ISR → loop()</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-rocket"></i> Performance Leap:</h5>
+                        <p>Encoder reads: polling=50% CPU, interrupt=0.1% CPU. 50kHz PWM generation without blocking main loop.</p>
                     </div>
                 </div>
             </div>
@@ -489,65 +524,71 @@
             <h2 class="category-title">03. Sensors & Actuators</h2>
             <div class="lessons-grid">
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge mid">Intermediate</span>
-                            <span class="time"><i class="far fa-clock"></i> 50 MIN</span>
-                        </div>
-                        <h3>Temperature Sensing</h3>
-                        <p>Measure temperature with multiple sensor types.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-thermometer-half"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>DHT11/22 digital sensors (OneWire)</li>
-                                <li>DS18B20 waterproof probe</li>
-                                <li>Linearization and calibration</li>
-                                <li>Data averaging and filtering</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge mid">Intermediate</span>
+                    </div>
+                    <h3>Temperature Sensing Systems</h3>
+                    <p>Three sensor types, one interface standard. Reliable temperature measurement for any environment.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-thermometer-half"></i> Sensor Arsenal:</h4>
+                        <ul>
+                            <li>DHT22: ±0.5°C, humidity bonus</li>
+                            <li>DS18B20: 1-Wire, waterproof probes</li>
+                            <li>NTC thermistor: Cheap, needs linearization</li>
+                            <li>Multiple sensors on single pin (parasitic power)</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-chart-area"></i> Data Quality:</h5>
+                        <p>Raw NTC readings nonlinear. Use Steinhart-Hart equation or lookup table. 10-sample average kills noise.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge mid">Intermediate</span>
-                            <span class="time"><i class="far fa-clock"></i> 40 MIN</span>
-                        </div>
-                        <h3>Servo & Stepper Control</h3>
-                        <p>Precise motor control for robotics.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-cog"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>Servo.attach(pin) and write(angle)</li>
-                                <li>Stepper library with A4988 driver</li>
-                                <li>Microstepping (1/16 steps)</li>
-                                <li>Acceleration profiles</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge mid">Intermediate</span>
+                    </div>
+                    <h3>Servo & Stepper Precision</h3>
+                    <p>Convert Arduino pulses to mechanical motion. Foundation of robotics and automation.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-cog"></i> Motion Control:</h4>
+                        <ul>
+                            <li>Servo: 1-2ms pulse every 20ms = 0-180°</li>
+                            <li>Stepper: 200 steps/rev × 16 microsteps = 3200 steps</li>
+                            <li>A4988 driver: 1/16 microstepping smooth</li>
+                            <li>AccelStepper library: Ramp speed automatically</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-robot"></i> Robot Reality:</h5>
+                        <p>Servo jitters without decoupling cap. Stepper skips steps above 1000 steps/sec without acceleration ramping.</p>
                     </div>
                 </div>
 
                 <div class="lesson-card">
-                    <div>
-                        <div class="lesson-info">
-                            <span class="badge hard">Advanced</span>
-                            <span class="time"><i class="far fa-clock"></i> 80 MIN</span>
-                        </div>
-                        <h3>IMU & Motion Sensing</h3>
-                        <p>6/9-axis motion tracking with sensor fusion.</p>
-                        
-                        <div class="key-points">
-                            <h4><i class="fas fa-compass"></i> Key Learning Objectives:</h4>
-                            <ul>
-                                <li>MPU6050 accelerometer + gyroscope</li>
-                                <li>Quaternion math for orientation</li>
-                                <li>Kalman filter implementation</li>
-                                <li>Gesture recognition algorithms</li>
-                            </ul>
-                        </div>
+                    <div class="lesson-info">
+                        <span class="badge hard">Advanced</span>
+                    </div>
+                    <h3>IMU Motion Tracking</h3>
+                    <p>6/9-axis sensor fusion for drones, robots, VR. Raw accel/gyro → stable orientation.</p>
+                    
+                    <div class="key-points">
+                        <h4><i class="fas fa-compass"></i> Orientation Mastery:</h4>
+                        <ul>
+                            <li>MPU6050: 3-axis accel + 3-axis gyro</li>
+                            <li>Quaternion math eliminates gimbal lock</li>
+                            <li>Kalman filter fuses noisy sensor data</li>
+                            <li>100Hz update rate for smooth tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="insights">
+                        <h5><i class="fas fa-satellite-dish"></i> Drone Essential:</h5>
+                        <p>Raw gyro drifts 1°/sec. Complementary filter (98% accel + 2% gyro) gives stable 0.1° accuracy. Madgwick filter for 9DOF.</p>
                     </div>
                 </div>
             </div>
@@ -556,7 +597,7 @@
     </main>
 
     <footer>
-        © 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL | 15+ Modules Available
+        © 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL | 15+ Advanced Modules
     </footer>
 
 </body>
