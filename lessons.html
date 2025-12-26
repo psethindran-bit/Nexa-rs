@@ -19,11 +19,12 @@
             --easy: #00ff88;
             --mid: #ffcc00;
             --hard: #ff4444;
+            --white: #ffffff;
         }
 
-        /* ------------------ GLOBAL ------------------ */
+        /* GLOBAL */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
             background: var(--dark-blue);
             background-image: 
                 linear-gradient(rgba(0, 234, 255, 0.03) 1px, transparent 1px),
@@ -34,18 +35,14 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
 
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* ------------------ NAVBAR ------------------ */
+        /* NAVBAR */
         nav {
             backdrop-filter: blur(10px);
             background: var(--medium-blue);
-            padding: 10px 60px;
+            padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,7 +62,6 @@
             margin: 0;
             text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
         }
-
         .tagline {
             font-family: "Orbitron", sans-serif;
             font-size: 0.6rem;
@@ -83,126 +79,183 @@
             font-size: 0.9rem;
             transition: 0.3s;
         }
+        nav ul li a:hover, nav ul li a.active { 
+            color: var(--neon-blue); 
+            text-shadow: 0 0 8px var(--neon-blue); 
+        }
 
-        nav ul li a:hover, nav ul li a.active { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
-
-        /* ------------------ LESSONS CONTENT ------------------ */
+        /* HEADER */
         .header-section {
             text-align: center;
-            padding: 60px 20px;
-            animation: slideInLeft 0.8s ease-out;
+            padding: 80px 20px 40px;
         }
-
         .header-section h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: var(--white);
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, var(--neon-blue));
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--white), var(--neon-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .header-section p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
+        /* LESSONS CONTAINER */
         .lessons-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto 80px;
             padding: 0 20px;
         }
 
         .lesson-category {
-            margin-bottom: 50px;
+            margin-bottom: 80px;
         }
 
         .category-title {
             font-family: 'Orbitron';
-            font-size: 1.5rem;
-            border-left: 4px solid var(--neon-blue);
-            padding-left: 15px;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
+            font-size: 2rem;
+            border-left: 5px solid var(--neon-blue);
+            padding-left: 20px;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, var(--neon-blue), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .lessons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .lesson-card {
             background: var(--glass);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 25px;
-            transition: 0.3s;
+            border-radius: 20px;
+            padding: 35px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
         }
-
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--easy), var(--mid), var(--hard));
+        }
         .lesson-card:hover {
+            transform: translateY(-8px);
             border-color: var(--neon-blue);
-            background: rgba(0, 234, 255, 0.05);
-            transform: scale(1.02);
-        }
-
-        .lesson-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-            color: var(--white);
+            box-shadow: 0 20px 40px rgba(0,234,255,0.2);
         }
 
         .lesson-info {
             display: flex;
             gap: 15px;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .badge {
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .badge.easy { background: rgba(0,255,136,0.2); color: var(--easy); border: 1px solid var(--easy); }
+        .badge.mid { background: rgba(255,204,0,0.2); color: var(--mid); border: 1px solid var(--mid); }
+        .badge.hard { background: rgba(255,68,68,0.2); color: var(--hard); border: 1px solid var(--hard); }
+
+        .time { 
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #bbb;
         }
 
-        .badge.easy { color: var(--easy); border: 1px solid var(--easy); }
-        .badge.mid { color: var(--mid); border: 1px solid var(--mid); }
-        .badge.hard { color: var(--hard); border: 1px solid var(--hard); }
-
-        .time { color: #aaa; }
+        .lesson-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
 
         .lesson-card p {
             font-size: 1rem;
-            opacity: 0.8;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
         }
 
-        .start-btn {
-            text-align: center;
-            padding: 10px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
+        /* KEY LEARNING POINTS */
+        .key-points {
+            background: rgba(0,234,255,0.1);
+            border-left: 3px solid var(--neon-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .key-points h4 {
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .key-points li {
+            padding: 4px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        .key-points li::before {
+            content: "▸";
+            color: var(--neon-blue);
+            position: absolute;
+            left: 0;
         }
 
-        .start-btn:hover {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        /* ------------------ FOOTER ------------------ */
+        /* FOOTER */
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 30px;
-            background: rgba(0,0,0,0.4);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.6);
+            border-top: 1px solid rgba(255,255,255,0.1);
             letter-spacing: 2px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; gap: 20px; }
+            nav ul { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .header-section h1 { font-size: 2.5rem; }
+            .category-title { font-size: 1.6rem; }
+            .lessons-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -225,11 +278,12 @@
 
     <div class="header-section">
         <h1>Learning Laboratory</h1>
-        <p>Systematic modules designed to master the language of hardware.</p>
+        <p>Master hardware fundamentals through structured modules with clear learning objectives and practical applications.</p>
     </div>
 
     <main class="lessons-container">
         
+        <!-- 01. CORE ELECTRONICS -->
         <div class="lesson-category">
             <h2 class="category-title">01. Core Electronics</h2>
             <div class="lessons-grid">
@@ -240,9 +294,18 @@
                             <span class="time"><i class="far fa-clock"></i> 15 MIN</span>
                         </div>
                         <h3>Ohm's Law Masterclass</h3>
-                        <p>The foundation of everything. Learn how Voltage, Current, and Resistance interact in a circuit.</p>
+                        <p>Learn the fundamental relationship <strong>V = I × R</strong>. Calculate current flow, voltage drops, and power dissipation in any circuit.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-bolt"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Calculate resistance needed for LED circuits</li>
+                                <li>Solve series and parallel resistor networks</li>
+                                <li>Understand power ratings (watts = volts × amps)</li>
+                                <li>Prevent component damage from overcurrent</li>
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#" class="start-btn">INITIALIZE MODULE</a>
                 </div>
 
                 <div class="lesson-card">
@@ -252,13 +315,65 @@
                             <span class="time"><i class="far fa-clock"></i> 20 MIN</span>
                         </div>
                         <h3>Component Anatomy</h3>
-                        <p>Identifying Resistors, Capacitors, and Diodes. Understand their symbols and physical forms.</p>
+                        <p>Identify electronic components by sight and symbol. Read resistor color codes and capacitor markings accurately.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-microchip"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Decode 4/5-band resistor color codes</li>
+                                <li>Read ceramic/electrolytic capacitor values</li>
+                                <li>Identify diode markings and LED polarity</li>
+                                <li>Test components with multimeter</li>
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#" class="start-btn">INITIALIZE MODULE</a>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge easy">Beginner</span>
+                            <span class="time"><i class="far fa-clock"></i> 25 MIN</span>
+                        </div>
+                        <h3>Power Supply Basics</h3>
+                        <p>Build stable 5V/3.3V power supplies. Understand voltage regulation and filtering.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-plug"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Use 7805 regulator for 5V output</li>
+                                <li>Add capacitors for ripple filtering</li>
+                                <li>Calculate heat sink requirements</li>
+                                <li>USB vs barrel jack power options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge mid">Intermediate</span>
+                            <span class="time"><i class="far fa-clock"></i> 35 MIN</span>
+                        </div>
+                        <h3>Kirchhoff's Laws</h3>
+                        <p>Solve complex circuits using KVL (voltage) and KCL (current) laws.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-calculator"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Apply KVL around circuit loops</li>
+                                <li>Use KCL at circuit junctions</li>
+                                <li>Solve voltage divider circuits</li>
+                                <li>Analyze current sharing in parallel</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 02. ARDUINO & LOGIC -->
         <div class="lesson-category">
             <h2 class="category-title">02. Arduino & Logic</h2>
             <div class="lessons-grid">
@@ -269,9 +384,18 @@
                             <span class="time"><i class="far fa-clock"></i> 45 MIN</span>
                         </div>
                         <h3>The Setup() & Loop()</h3>
-                        <p>Deep dive into the Arduino IDE structure. Learn how to write clean, efficient C++ code for hardware.</p>
+                        <p>Master Arduino program structure. Write efficient, readable code.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-code"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Initialize pins in setup()</li>
+                                <li>Use loop() for continuous operation</li>
+                                <li>Declare global vs local variables</li>
+                                <li>Avoid common blocking code errors</li>
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#" class="start-btn">INITIALIZE MODULE</a>
                 </div>
 
                 <div class="lesson-card">
@@ -281,9 +405,18 @@
                             <span class="time"><i class="far fa-clock"></i> 60 MIN</span>
                         </div>
                         <h3>Digital vs Analog</h3>
-                        <p>Master the difference between binary signals and continuous voltage readings with PWM and ADC.</p>
+                        <p>Understand binary (digital) vs continuous (analog) signals.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-signal"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>digitalRead() / digitalWrite() usage</li>
+                                <li>analogRead() returns 0-1023</li>
+                                <li>PWM with analogWrite() on pins 3,5,6,9,10,11</li>
+                                <li>Map sensor values to outputs</li>
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#" class="start-btn">INITIALIZE MODULE</a>
                 </div>
 
                 <div class="lesson-card">
@@ -293,9 +426,129 @@
                             <span class="time"><i class="far fa-clock"></i> 90 MIN</span>
                         </div>
                         <h3>I2C Communication</h3>
-                        <p>Connecting multiple sensors to a single board using the Inter-Integrated Circuit protocol.</p>
+                        <p>Connect multiple devices using 2-wire I2C protocol.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-link"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Wire.begin() and device addresses (0x68 MPU6050)</li>
+                                <li>Read/Write registers with Wire library</li>
+                                <li>I2C scanner to find connected devices</li>
+                                <li>Handle multi-byte transfers</li>
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#" class="start-btn">INITIALIZE MODULE</a>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge hard">Advanced</span>
+                            <span class="time"><i class="far fa-clock"></i> 75 MIN</span>
+                        </div>
+                        <h3>SPI Protocol Mastery</h3>
+                        <p>High-speed 4-wire communication for displays and sensors.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-broadcast-tower"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>SPI pins: 11(MOSI), 12(MISO), 13(SCK)</li>
+                                <li>Chip Select (CS) for multiple devices</li>
+                                <li>SPI clock modes 0,1,2,3 configuration</li>
+                                <li>High-speed SD card and OLED display</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge hard">Advanced</span>
+                            <span class="time"><i class="far fa-clock"></i> 120 MIN</span>
+                        </div>
+                        <h3>Interrupts & Timers</h3>
+                        <p>Replace polling with event-driven interrupts.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-stopwatch"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>attachInterrupt() on pins 2,3</li>
+                                <li>Timer1/2 for precise timing</li>
+                                <li>ISR (Interrupt Service Routine) best practices</li>
+                                <li>Non-blocking code architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 03. SENSORS & ACTUATORS -->
+        <div class="lesson-category">
+            <h2 class="category-title">03. Sensors & Actuators</h2>
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge mid">Intermediate</span>
+                            <span class="time"><i class="far fa-clock"></i> 50 MIN</span>
+                        </div>
+                        <h3>Temperature Sensing</h3>
+                        <p>Measure temperature with multiple sensor types.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-thermometer-half"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>DHT11/22 digital sensors (OneWire)</li>
+                                <li>DS18B20 waterproof probe</li>
+                                <li>Linearization and calibration</li>
+                                <li>Data averaging and filtering</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge mid">Intermediate</span>
+                            <span class="time"><i class="far fa-clock"></i> 40 MIN</span>
+                        </div>
+                        <h3>Servo & Stepper Control</h3>
+                        <p>Precise motor control for robotics.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-cog"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>Servo.attach(pin) and write(angle)</li>
+                                <li>Stepper library with A4988 driver</li>
+                                <li>Microstepping (1/16 steps)</li>
+                                <li>Acceleration profiles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <div>
+                        <div class="lesson-info">
+                            <span class="badge hard">Advanced</span>
+                            <span class="time"><i class="far fa-clock"></i> 80 MIN</span>
+                        </div>
+                        <h3>IMU & Motion Sensing</h3>
+                        <p>6/9-axis motion tracking with sensor fusion.</p>
+                        
+                        <div class="key-points">
+                            <h4><i class="fas fa-compass"></i> Key Learning Objectives:</h4>
+                            <ul>
+                                <li>MPU6050 accelerometer + gyroscope</li>
+                                <li>Quaternion math for orientation</li>
+                                <li>Kalman filter implementation</li>
+                                <li>Gesture recognition algorithms</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -303,9 +556,8 @@
     </main>
 
     <footer>
-        © 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL
+        © 2025 <span style="color: var(--neon-blue); font-family: Orbitron;">NEXA</span> — ALL SYSTEMS OPERATIONAL | 15+ Modules Available
     </footer>
 
 </body>
-
 </html>
